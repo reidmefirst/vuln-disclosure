@@ -1,0 +1,49 @@
+Date: 06-August-2021
+Vendor: Open Web Application Security Project (OWASP)
+Product: CSRFGuard
+Versions affected: 3.0, 3.1.0, 4.0 pre-release. Other versions may also be affected.
+Product URL: https://owasp.org/www-project-csrfguard/ 
+
+Summary:
+
+OWASP CSRFGuard project is vulnerable to CSRF (CVE-2021-28490), (CWE-352), (CVSS3.1 score: 8.8 (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H)). 
+
+Note that the CVSS score takes the liberty of assuming that your web application has something worth confidentiality-ing, integrity-ing, or availability-ing. What an attacker can actually do will depend upon who they trick into clicking a link.
+
+Description:
+
+CSRFGuard is a project meant to add CSRF protection to java-based web applications. Unfortunately versions 3.0, 3.1.0 and including pre-release versions of 4.0 are vulnerable to CSRF. The CSRF cookie may be retrieved using only a session token, which may be wrapped by a third-party request and which a browser may happily provide.
+
+Modern browsers that do fancy pre-flight checking may stop the attack, but this depends upon the configuration of your web application. A lot of old web applications don't support the pre-flight checks required, and so will only work with an ancient web browser.
+
+OWASP developers did acknowledge the problem but have refused to release any advisory to warn users about the issue and has not committed to a fix. Ironically, this makes users more likely to suffer from OWASP's 'Top 10' issue #9: using components with known vulnerabilities. Without publishing its own advisory, OWASP is promoting use of an insecure tool and putting end users at greater risk.
+
+Determining if your application is vulnerable: 
+
+Developers: Look to see if you include the csrfguard project in your java application. If you are using any version (including 4.0), you are most likely vulnerable. 
+
+End users: Some versions of CSRFGuard will set a special header "X-Protected-With: OWASP CSRFGuard Project" within the web application, although this is configurable by the user. Look at HTTP headers for the page you are visiting to see if there is any reference to CSRFguard headers.
+
+Researchers: If you use a tool like Burp, look for CSRFGuard text in your web browser history.
+
+FAQ:
+
+CSRF? In 2021?
+
+Yeah, no, it's not very interesting. Please don't think that's some amazing bug. In spite of the high CVSS score it's pretty lame.
+
+How do I exploit this?
+
+You'll have to send a request to your web application's csrf token request point. No, I won't show you how to do that on your app. Hire a web pentester, they'll teach you how.
+
+In the grand scheme of things how bad this?
+
+On the technical side of things, it really isn't that big of a deal. Most web applications have terrible security anyway, and if you are vulnerable to this, then you probably also have some nastier bugs that are infinitely more useful to an adversary. 
+
+OWASP's lack of response is a little upsetting though. You'd really think that an organization which is focused on vulnerabilities, and which publishes software, and which has 'Security' right there in their name, would have a vulnerability reporting process and a disclosure policy. But, it's 2021 and here we are...maybe some day they'll read their own Vulnerability Disclosure Cheat Sheet and take the 'Organisations' advice listed there ( https://cheatsheetseries.owasp.org/cheatsheets/Vulnerability_Disclosure_Cheat_Sheet.html ). 
+
+But hey, you get what you pay for, and the software is free.
+
+"You get what you pay for"? I didn't pay for this advisory and it's useless to me!
+
+🤔. That's not a question. But I guess I see your point?
