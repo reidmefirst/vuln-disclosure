@@ -1,4 +1,5 @@
 Date: 06-August-2021
+Updated: 13-September-2021
 Vendor: Open Web Application Security Project (OWASP)
 Product: CSRFGuard
 Versions affected: 3.0, 3.1.0, 4.0 pre-release. Other versions may also be affected.
@@ -14,9 +15,9 @@ Description:
 
 CSRFGuard is a project meant to add CSRF protection to java-based web applications. Unfortunately versions 3.0, 3.1.0 and including pre-release versions of 4.0 are vulnerable to CSRF. The CSRF cookie may be retrieved using only a session token, which may be wrapped by a third-party request and which a browser may happily provide.
 
-Modern browsers that do fancy pre-flight checking may stop the attack, but this depends upon the configuration of your web application. A lot of old web applications don't support the pre-flight checks required, and so will only work with an ancient web browser.
+Modern browsers that do fancy pre-flight checking may stop the attack, but this depends upon the configuration of your web application. A lot of old web applications don't support the pre-flight checks required, and so will only work with an ancient web browser. *Update*: In particular, your browser MUST support CORS and MUST deny cross-origin requests to the protected application. With this protection, CSRFGuard 4.0.0 will work as intended. Without this protection, CSRFGuard may fail.*/Update*
 
-OWASP developers did acknowledge the problem but have refused to release any advisory to warn users about the issue and has not committed to a fix. Ironically, this makes users more likely to suffer from OWASP's 'Top 10' issue #9: using components with known vulnerabilities. Without publishing its own advisory, OWASP is promoting use of an insecure tool and putting end users at greater risk.
+*Update*: OWASP developers did work with me and give an opportunity to show how the issue is a problem. We disagree on the real-world exploitability of the issue, since exploitation requires a browser that will make cross-origin requests from a malicious domain (or, an attacker tricks an end user into downloading and opening a .html file in the same browser that they are currently logged-in to the current web application with). Anyway, it is all splitting hairs and typical vulnerability reporting stuff: as above, if you are using CSRFGuard make sure all your clients respect CORS!*/Update*
 
 Determining if your application is vulnerable: 
 
@@ -40,7 +41,7 @@ In the grand scheme of things how bad this?
 
 On the technical side of things, it really isn't that big of a deal. Most web applications have terrible security anyway, and if you are vulnerable to this, then you probably also have some nastier bugs that are infinitely more useful to an adversary. 
 
-OWASP's lack of response is a little upsetting though. You'd really think that an organization which is focused on vulnerabilities, and which publishes software, and which has 'Security' right there in their name, would have a vulnerability reporting process and a disclosure policy. But, it's 2021 and here we are...maybe some day they'll read their own Vulnerability Disclosure Cheat Sheet and take the 'Organisations' advice listed there ( https://cheatsheetseries.owasp.org/cheatsheets/Vulnerability_Disclosure_Cheat_Sheet.html ). 
+*Update*: The CSRFGuard devs did reach out and look into the issue once an advisory was made public. While we disagree with the final exploitability, that is a good step. Now if OWASP would have some standard disclosure process rather than relying on individual researchers and individual developers to butt heads about exploitation, that would be swell...
 
 But hey, you get what you pay for, and the software is free.
 
