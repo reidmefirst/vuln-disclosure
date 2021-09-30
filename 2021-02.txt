@@ -1,0 +1,41 @@
+Date: 28-September-2021
+
+Vendor: Digi International
+
+Products affected: 
+RealPort software for Windows, version 4.8.488.0 and earlier
+RealPort software for Linux, version 1.9-40 and earlier
+Digi ConnectPort TS 8/16, all versions
+Digi Passport Console Server, all versions
+Digi ConnectPort LTS 8/16/32, all versions
+Digi CM Console Server, all versions
+Digi PortServer TS, all versions
+Digi PortServer TS MEI, all versions
+Digi PortServer TS MEI Hardened, all versions
+Digi PortServer TS M MEI, all versions
+Digi 6350-SR, all versions
+Digi PortServer TS P MEI, all versions
+Digi WR11 XT, all versions
+Digi One IAP Family, all versions
+Digi One IA, all versions
+Digi WR31, all versions
+Digi WR44 R, all versions
+Digi Connect ES, all versions
+Digi WR21, all versions
+Digi ConnectCore 8X products, all versions
+Likely: All Digi products which support the RealPort service and have it enabled.
+Note: Some third-party products make use of Digi hardware but do not brand it as such. To determine if your system is vulnerable, see Description below.
+
+Product URL: https://www.digi.com/support/knowledge-base/what-is-realport
+
+Vulnerabilities Summary:
+
+RealPort software for Windows is vulnerable to a buffer overrun when parsing response messages during device setup. This may result in arbitrary code execution. CVE-2021-35977. CVSSv3 8.0 (AV:A/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H). 
+
+RealPort encryption mode is vulnerable to man-in-the-middle. CVE-2021-35979. CVSSv3 7.5 (AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H).
+
+RealPort authentication mode has a weakness which allows offline bruteforce attack. CVE-2021-36767. CVSSv3 9.1 (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).
+
+Description:
+
+For further details, see Dragos advisory VA-2021-10 or contact intel@dragos.com.
