@@ -23,7 +23,6 @@ Digi WR31, all versions
 Digi WR44 R, all versions
 Digi Connect ES, all versions
 Digi WR21, all versions
-Digi ConnectCore 8X products, all versions
 Likely: All Digi products which support the RealPort service and have it enabled.
 Note: Some third-party products make use of Digi hardware but do not brand it as such. To determine if your system is vulnerable, see Description below.
 
