@@ -1,5 +1,6 @@
 Date: 28-September-2021
 Updated Date: 31-December-2021
+Updated Date: 08-May-2023 to remove ConnectCore 8 from the list of affected products
 
 Vendor: Digi International
 
