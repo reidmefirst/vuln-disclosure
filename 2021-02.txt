@@ -1,12 +1,12 @@
 Date: 28-September-2021
 Updated Date: 31-December-2021
-Updated Date: 08-May-2023 to remove ConnectCore 8 from the list of affected products
+Updated Date: 08-May-2023 to remove ConnectCore 8 from the list of affected products, updated RealPort software for Linux to show affected versions
 
 Vendor: Digi International
 
 Products affected: 
 RealPort software for Windows, version 4.10.490 and earlier
-RealPort software for Linux, version 1.9-40 and earlier
+RealPort software for Linux, version 1.9-41 and earlier
 Digi ConnectPort TS 8/16, all versions
 Digi Passport Console Server, all versions
 Digi ConnectPort LTS 8/16/32, all versions
@@ -33,7 +33,7 @@ Vulnerabilities Summary:
 
 RealPort software for Windows is vulnerable to a buffer overrun when parsing response messages during device setup. This may result in arbitrary code execution. CVE-2021-35977. CVSSv3 8.0 (AV:A/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H). 
 
-RealPort encryption mode is vulnerable to man-in-the-middle. CVE-2021-35979. CVSSv3 7.5 (AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H). Note: this issue is partially fixed in RealPort software 4.10.490.
+RealPort encryption mode is vulnerable to man-in-the-middle. CVE-2021-35979. CVSSv3 7.5 (AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H). Note: this issue is partially fixed in RealPort software 4.10.490 for Windows and 1.9-41 for Linux by adding certificate pinning.
 
 RealPort authentication mode has a weakness which allows offline bruteforce attack. CVE-2021-36767. CVSSv3 9.1 (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).
 
