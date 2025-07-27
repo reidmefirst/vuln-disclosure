@@ -1,0 +1,30 @@
+Date: 25-July-2025
+Vendor: Johnson Controls, Inc
+Products Affected:
+iSTAR Ultra
+iSTAR Ultra SE
+iSTAR Ultra G2
+
+Firmwares Affected:
+Varies by vulnerability. Awaiting vendor to confirm vulnerable firmware versions.
+
+Vulnerabilities Summary:
+Unauthenticated access to door configuration and badge data. This was previously reported by the vendor as Machine-in-the-Middle but it's really unauthenticated access. This affects all iSTAR Pro models, and iSTAR Ultra prior to 6.6.B. Note that iSTAR Ultra models run in 'Pro' mode are still vulnerable. Also note that the vendor guidance to disable 'write' access via jumper settings does not prevent this access. CVE-2024-32752. CVSSv3 9.8 (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+
+Authenticated command injection via HTTP. Parameters for certain POST handlers may have OS commands injected, resulting in code execution with 'root' privileges on the device. CVE-2025-53695 . Tested and confirmed on firmware up to 6.9.2, later firmwares may also be affected. CVSSv3 8.8 (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+
+Hardcoded 'root' credentials. CVE-2025-53697. These credentials may be abused by CVE-2025-53695, CVE-2022-21941, CVE-2023-3127, CVE-2025-53698, or CVE-2025-53699. Any of these earlier CVEs can chain with this one, for example to enable additional services, which allows root login by default. No fix appears planned by the vendor, assume all firmwares are impacted. CVSS score is hard to judge for this one. Possible scores: 8.4 (for local access) (AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). Alternate score (ex: chaining previous vulnerability to enable SSH server): CVSSv3 8.1 (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+
+Serial console backdoor. On older firmwares, this gives immediate 'root' access with hardware access to the system. On newer firmware, the bootloader may be modified to give root access. No fix appears planned by the vendor. CVE-2025-53698. CVSSV3 6.8 (AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). Note: ordinarily 'physical' vector vulns don't get CVE assignment, but the product is marketed as running a "hardened embedded OS". Firmware 6.8.1 made an attempt to address this issue.
+
+USB console backdoor. On all firmwares, this may be combined with the hardcoded 'root' credentials to give access to the command line. No fix appears planned by the vendor. CVE-2025-53699. CVSSv3 6.8 (AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). Note: ordinarily 'physical' vector vulns don't get CVE assignment, but the product is marketed as running a "hardened embedded OS". Utilizing this backdoor is trivial, and can reliably give administrative privileges in a scriptable manner.
+
+Firmware contains software signing key for additional devices. The iSTAR Ultra firmware contains a secret key for signing packages and firmware updates for Tyco NVR products. This key may be retrieved from any device using CVE-2022... etc, allowing an attacker to sign malicious updates for NVR devices. No fix appears planned by the vendor. CVE-2025-53700. This vulnerability is hard to character: it really impacts other devices. CVSS score as it applies to those devices: CVSSv3 8.8 (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+
+Description:
+
+See summaries above. Note that other security issues with these products are not assigned CVEs, but may be of interest to owners of the device.
+
+For further details, see Dragos advisory VA-2025-03, VA-2024-06, or contact intel@dragos.com.
+
+Vulnerability disclosure was made in accordance with the Dragos disclosure policy: https://www.dragos.com/vulnerabilities-policy/ 
