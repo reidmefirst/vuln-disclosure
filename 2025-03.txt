@@ -9,7 +9,7 @@ Firmwares Affected:
 Varies by vulnerability. Awaiting vendor to confirm vulnerable firmware versions.
 
 Vulnerabilities Summary:
-Unauthenticated access to door configuration and badge data. This was previously reported by the vendor as Machine-in-the-Middle but it's really unauthenticated access. This affects all iSTAR Pro models, and iSTAR Ultra prior to 6.6.B. Note that iSTAR Ultra models run in 'Pro' mode are still vulnerable. Also note that the vendor guidance to disable 'write' access via jumper settings does not prevent this access. CVE-2024-32752. CVSSv3 9.8 (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+Unauthenticated access to door configuration and badge data. This was previously reported by the vendor as Machine-in-the-Middle but it's really unauthenticated access. This affects all iSTAR Pro models, and iSTAR Ultra prior to 6.6.B. Note that iSTAR Ultra models running in 'Pro' mode are vulnerable, no matter what firmware version they are running (note that 'Pro' mode is not the default configuration, users must set the Ultra to run in Pro mode via configuration). Also note that the vendor guidance to disable 'write' access via jumper settings does not prevent this access. CVE-2024-32752. CVSSv3 9.8 (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
 
 Authenticated command injection via HTTP. Parameters for certain POST handlers may have OS commands injected, resulting in code execution with 'root' privileges on the device. CVE-2025-53695 . Tested and confirmed on firmware up to 6.9.2, later firmwares may also be affected. CVSSv3 8.8 (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
 
