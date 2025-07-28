@@ -1,0 +1,18 @@
+25-July-2025
+Vendor: Microsoft
+Product Affected:
+Windows 11 22H2 and 23H2 for ARM64 CPU architecture
+
+Vulnerability Summary:
+Any PE32 application, when run on Windows 11 22H2 or 23H2 with ARM64 CPU architecture, is subject to DLL hijacking of 'Base' operating system DLLs. Windows will attempt to load these DLLs from the Application Directory with a higher priority than the Windows installation directories. The hijackable DLLs in question are not normally hijackable based on prior research[1]. CVE-2025-7676, CVSSv3 7.8 (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+
+Analyst Note:
+
+Most software installers, regardless of the CPU architecture of the target software, are distributed as PE32 binaries and are impacted. Nearly all software which uses popular install wrappers will attempt to load several base and known dlls, which may be hijacked if a user runs from an unsafe (e.g. 'Downloads') directory. End users of ARM cpus should update to 24H2 when possible, and should practice moving installers to a clean directory prior to running them. Vendors of all software should distribute installers as a ZIP or other compressed archive, which will place the installer executable in a clean directory when decompressed.
+
+For further details, see Dragos advisory VA-2025-04 or contact intel@dragos.com.
+
+Credit: Reid Wightman and Jimmy Wylie from Dragos, Inc. Thank you to MSRC (Microsoft Security Response Center) for a positive vulnerability coordination experience.
+
+References: 
+[1] Siofra Research Tool: https://github.com/Cybereason/siofra/blob/master/Siofra-Research-Tool-Cybereason.pdf 
